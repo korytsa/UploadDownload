@@ -8,8 +8,6 @@ const app = express();
 import {
 	pipeline
 } from 'stream';
-import * as url from 'url';
-
 
 const uniqueAlphaNumericId = (() => {
 	const heyStack = '0123456789abcdefghijklmnopqrstuvwxyz';
@@ -140,14 +138,6 @@ app.post('/upload', (req, res) => {
 	req.pipe(busboy);
 });
 
-
-// app.get('/download', (req, res, next) => {
-// 	const __dirname = url.fileURLToPath(new URL('.',
-// 		import.meta.url));
-// 	res.setHeader('Content-Type', 'text/html');
-// 	const readStream = fs.createReadStream(__dirname + 'download.html');
-// 	pipeline(readStream, res, (err) => err && console.log(err));
-// })
 
 app.get('/video-stream', (req, res, next) => {
 	const pathToVideo = 'uploads/Thunk.mp4';
